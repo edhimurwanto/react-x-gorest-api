@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import UserContainer from "./user/components/UserContainer";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import DashboardComponent from "./dashboard/DashboardComponent";
+import React from "react";
+import HeaderComponent from "./shared/components/header/HeaderComponent";
+import NotFoundComponent from "./shared/components/not-found/NotFoundComponent";
+import FormUserComponent from "./user/components/FormUserComponent";
 
-function App() {
+const App = (props) => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+        <HeaderComponent/>
+        <Switch>
+            <Route exact path='/'>
+                <DashboardComponent />
+            </Route>
+            <Route path='/users'>
+                <UserContainer />
+            </Route>
+            <Route path='/form-user'>
+                <FormUserComponent />
+            </Route>
+            <Route path='*'>
+                <NotFoundComponent />
+            </Route>
+        </Switch>
+    </Router>
+  )
 }
 
 export default App;
