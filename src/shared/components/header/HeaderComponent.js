@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const HeaderComponent = () => {
+const HeaderComponent = ({authButton}) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -20,6 +20,9 @@ const HeaderComponent = () => {
                         </li>
                     </ul>
                 </div>
+                {
+                    authButton
+                }
             </div>
         </nav>
     );
